@@ -14,9 +14,9 @@
             filePath = "ImageGen/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "generate()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "didTapGenerate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "ImageGen/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "generate()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "didTapGenerate()"
             landmarkType = "7">
             <Locations>
                <Location

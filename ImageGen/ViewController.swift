@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Dall-E Image Gen"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        APICaller.shared.set(delegate: self)
         
         setGenerateButton()
         setTextField()
@@ -22,9 +26,9 @@ class ViewController: UIViewController {
     }
     
     func setImageView() {
-        promptImageView.layer.cornerRadius = 5
+        promptImageView.layer.cornerRadius = 10
         promptImageView.clipsToBounds = true
-        promptImageView.contentMode = .scaleAspectFill
+        promptImageView.contentMode = .scaleAspectFit
     }
     
     func setTextField() {
@@ -35,6 +39,9 @@ class ViewController: UIViewController {
     func setGenerateButton() {
         promptButton.setTitle("Generate Image", for: .normal)
         promptButton.layer.cornerRadius = 5
+        promptButton.clipsToBounds = true
+        promptButton.setTitleColor(.white, for: .normal)
+        promptButton.backgroundColor = .systemBlue
         promptButton.addTarget(self, action: #selector(didTapGenerate), for: .touchUpInside)
     }
     
@@ -59,17 +66,22 @@ class ViewController: UIViewController {
             }
         })
     }
-    
-    /*
-     @objc func didTapButton(_ sender: Any) {
-         Task {
-             try await testAsync()
-         }
-     }
-
-     func testAsync() async throws {
-         ...
-     }
-     */
 }
 
+extension ViewController: APICallerDelegate {
+    func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.promptButton.configuration?.showsActivityIndicator = true
+            self?.promptButton.configuration?.title = nil
+            self?.promptButton.isEnabled = false
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.promptButton.configuration?.showsActivityIndicator = false
+            self?.promptButton.configuration?.title = "Generate"
+            self?.promptButton.isEnabled = true
+        }
+    }
+}

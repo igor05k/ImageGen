@@ -9,14 +9,24 @@ import Foundation
 import OpenAIKit
 import UIKit.UIImage
 
+protocol APICallerDelegate: AnyObject {
+    func startLoading()
+    func stopLoading()
+}
+
 struct ConstantsAPI {
-    static let api_key = "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"
+    static let api_key = "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"
     static let organization = "Personal"
 }
 
 final class APICaller {
     static let shared = APICaller()
-    var openAI: OpenAI?
+    private var openAI: OpenAI?
+    private weak var delegate: APICallerDelegate?
+    
+    public func set(delegate: APICallerDelegate) {
+        self.delegate = delegate
+    }
     
     func setup() {
         self.openAI = OpenAI(Configuration(organization: ConstantsAPI.organization, apiKey: ConstantsAPI.api_key))
@@ -26,9 +36,10 @@ final class APICaller {
     
     func generateImage(input: String, completion: @escaping ((Result<UIImage, Error>) -> Void)) async {
         do {
+            delegate?.startLoading()
             let imageParam = ImageParameters(
               prompt: input,
-              resolution: .small,
+              resolution: .medium,
               responseFormat: .base64Json
             )
             
@@ -40,7 +51,9 @@ final class APICaller {
             let b64Image = result.data[0].image
             let image = try openAI.decodeBase64Image(b64Image)
             completion(.success(image))
+            delegate?.stopLoading()
         } catch {
+            delegate?.stopLoading()
             completion(.failure(error))
         }
     }
