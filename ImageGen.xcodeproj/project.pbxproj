@@ -15,6 +15,7 @@
 		825ABA3F294A5587002932B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825ABA3D294A5587002932B2 /* LaunchScreen.storyboard */; };
 		825ABA48294A57F3002932B2 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 825ABA47294A57F3002932B2 /* OpenAIKit */; };
 		825ABA4B294A5808002932B2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825ABA4A294A5808002932B2 /* APICaller.swift */; };
+		825ABA4D294A7165002932B2 /* OpenAI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 825ABA4C294A7165002932B2 /* OpenAI-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		825ABA3E294A5587002932B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		825ABA40294A5587002932B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		825ABA4A294A5808002932B2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		825ABA4C294A7165002932B2 /* OpenAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenAI-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +62,12 @@
 		825ABA31294A5584002932B2 /* ImageGen */ = {
 			isa = PBXGroup;
 			children = (
-				825ABA49294A57FE002932B2 /* Service */,
-				825ABA32294A5584002932B2 /* AppDelegate.swift */,
-				825ABA34294A5584002932B2 /* SceneDelegate.swift */,
-				825ABA36294A5584002932B2 /* ViewController.swift */,
-				825ABA38294A5584002932B2 /* Main.storyboard */,
-				825ABA3B294A5587002932B2 /* Assets.xcassets */,
-				825ABA3D294A5587002932B2 /* LaunchScreen.storyboard */,
+				825ABA4F294A718C002932B2 /* Controllers */,
 				825ABA40294A5587002932B2 /* Info.plist */,
+				825ABA38294A5584002932B2 /* Main.storyboard */,
+				825ABA4C294A7165002932B2 /* OpenAI-Info.plist */,
+				825ABA4E294A717B002932B2 /* Resources */,
+				825ABA49294A57FE002932B2 /* Service */,
 			);
 			path = ImageGen;
 			sourceTree = "<group>";
@@ -78,6 +78,25 @@
 				825ABA4A294A5808002932B2 /* APICaller.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		825ABA4E294A717B002932B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				825ABA32294A5584002932B2 /* AppDelegate.swift */,
+				825ABA3B294A5587002932B2 /* Assets.xcassets */,
+				825ABA3D294A5587002932B2 /* LaunchScreen.storyboard */,
+				825ABA34294A5584002932B2 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		825ABA4F294A718C002932B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				825ABA36294A5584002932B2 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825ABA4D294A7165002932B2 /* OpenAI-Info.plist in Resources */,
 				825ABA3F294A5587002932B2 /* LaunchScreen.storyboard in Resources */,
 				825ABA3C294A5587002932B2 /* Assets.xcassets in Resources */,
 				825ABA3A294A5584002932B2 /* Main.storyboard in Resources */,

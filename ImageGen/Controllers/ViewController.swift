@@ -25,10 +25,36 @@ class ViewController: UIViewController {
         setImageView()
     }
     
+    @objc func didTapGenerate() {
+        Task {
+            await generate()
+        }
+    }
+    
+    func generate() async {
+        guard let text = promptTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        print(text)
+        await APICaller.shared.generateImage(input: text, completion: { [weak self] result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    self?.promptImageView.image = success
+                    self?.promptTextField.text = nil
+                }
+                print(success)
+            case .failure(let failure):
+                DispatchQueue.main.async {
+                    self?.promptTextField.text = nil
+                }
+                print(failure)
+            }
+        })
+    }
+    
     func setImageView() {
         promptImageView.layer.cornerRadius = 10
         promptImageView.clipsToBounds = true
-        promptImageView.contentMode = .scaleAspectFit
+        promptImageView.contentMode = .scaleAspectFill
     }
     
     func setTextField() {
@@ -43,28 +69,6 @@ class ViewController: UIViewController {
         promptButton.setTitleColor(.white, for: .normal)
         promptButton.backgroundColor = .systemBlue
         promptButton.addTarget(self, action: #selector(didTapGenerate), for: .touchUpInside)
-    }
-    
-    @objc func didTapGenerate() {
-        Task {
-            await generate()
-        }
-    }
-    
-    func generate() async {
-        guard let text = promptTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
-        print(text)
-        await APICaller.shared.generateImage(input: text, completion: { result in
-            switch result {
-            case .success(let success):
-                DispatchQueue.main.async {
-                    self.promptImageView.image = success
-                }
-                print(success)
-            case .failure(let failure):
-                print(failure)
-            }
-        })
     }
 }
 

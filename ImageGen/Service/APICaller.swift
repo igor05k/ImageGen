@@ -15,8 +15,21 @@ protocol APICallerDelegate: AnyObject {
 }
 
 struct ConstantsAPI {
-    static let api_key = "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"
     static let organization = "Personal"
+    static var apiKey: String {
+      get {
+        
+        guard let filePath = Bundle.main.path(forResource: "OpenAI-Info", ofType: "plist") else {
+          fatalError("Couldn't find file 'TMDB-Info.plist'.")
+        }
+        
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "API_KEY") as? String else {
+          fatalError("Couldn't find key 'API_KEY' in 'OpenAI-Info.plist'.")
+        }
+        return value
+      }
+    }
 }
 
 final class APICaller {
@@ -29,7 +42,7 @@ final class APICaller {
     }
     
     func setup() {
-        self.openAI = OpenAI(Configuration(organization: ConstantsAPI.organization, apiKey: ConstantsAPI.api_key))
+        self.openAI = OpenAI(Configuration(organization: ConstantsAPI.organization, apiKey: ConstantsAPI.apiKey))
     }
     
     private init() {}
