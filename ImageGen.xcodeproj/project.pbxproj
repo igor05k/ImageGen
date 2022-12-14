@@ -13,6 +13,8 @@
 		825ABA3A294A5584002932B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825ABA38294A5584002932B2 /* Main.storyboard */; };
 		825ABA3C294A5587002932B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825ABA3B294A5587002932B2 /* Assets.xcassets */; };
 		825ABA3F294A5587002932B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825ABA3D294A5587002932B2 /* LaunchScreen.storyboard */; };
+		825ABA48294A57F3002932B2 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 825ABA47294A57F3002932B2 /* OpenAIKit */; };
+		825ABA4B294A5808002932B2 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825ABA4A294A5808002932B2 /* APICaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		825ABA3B294A5587002932B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		825ABA3E294A5587002932B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		825ABA40294A5587002932B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		825ABA4A294A5808002932B2 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825ABA48294A57F3002932B2 /* OpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +60,7 @@
 		825ABA31294A5584002932B2 /* ImageGen */ = {
 			isa = PBXGroup;
 			children = (
+				825ABA49294A57FE002932B2 /* Service */,
 				825ABA32294A5584002932B2 /* AppDelegate.swift */,
 				825ABA34294A5584002932B2 /* SceneDelegate.swift */,
 				825ABA36294A5584002932B2 /* ViewController.swift */,
@@ -65,6 +70,14 @@
 				825ABA40294A5587002932B2 /* Info.plist */,
 			);
 			path = ImageGen;
+			sourceTree = "<group>";
+		};
+		825ABA49294A57FE002932B2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				825ABA4A294A5808002932B2 /* APICaller.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +96,9 @@
 			dependencies = (
 			);
 			name = ImageGen;
+			packageProductDependencies = (
+				825ABA47294A57F3002932B2 /* OpenAIKit */,
+			);
 			productName = ImageGen;
 			productReference = 825ABA2F294A5584002932B2 /* ImageGen.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +127,9 @@
 				Base,
 			);
 			mainGroup = 825ABA26294A5584002932B2;
+			packageReferences = (
+				825ABA46294A57F3002932B2 /* XCRemoteSwiftPackageReference "OpenAIKit" */,
+			);
 			productRefGroup = 825ABA30294A5584002932B2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +160,7 @@
 				825ABA37294A5584002932B2 /* ViewController.swift in Sources */,
 				825ABA33294A5584002932B2 /* AppDelegate.swift in Sources */,
 				825ABA35294A5584002932B2 /* SceneDelegate.swift in Sources */,
+				825ABA4B294A5808002932B2 /* APICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +378,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		825ABA46294A57F3002932B2 /* XCRemoteSwiftPackageReference "OpenAIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcodotio/OpenAIKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		825ABA47294A57F3002932B2 /* OpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 825ABA46294A57F3002932B2 /* XCRemoteSwiftPackageReference "OpenAIKit" */;
+			productName = OpenAIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 825ABA27294A5584002932B2 /* Project object */;
 }
